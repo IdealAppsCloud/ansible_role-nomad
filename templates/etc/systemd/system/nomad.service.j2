@@ -1,0 +1,15 @@
+[Unit]
+Description=nomad service
+After=network-online.target
+
+[Service]
+Type=simple
+
+ExecStart=/usr/local/bin/nomad agent -config "{{ nomad_config_dir }}"
+
+TimeoutStopSec=60
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

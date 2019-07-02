@@ -1,0 +1,11 @@
+---
+- name: download nomad archive
+  get_url:
+    url: "https://releases.hashicorp.com/nomad/{{ nomad_version }}/nomad_{{ nomad_version }}_linux_amd64.zip"
+    dest: /tmp/nomad.zip
+
+- name: extract nomad archive
+  unarchive:
+    src: /tmp/nomad.zip
+    dest: /usr/local/bin/
+    remote_src: yes
